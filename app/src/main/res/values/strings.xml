@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">AppFrameWork_mvp_retrofit</string>
+    <string name="loading">loading</string>
+</resources>

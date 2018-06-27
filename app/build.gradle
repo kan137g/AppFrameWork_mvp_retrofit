@@ -1,0 +1,122 @@
+import java.text.SimpleDateFormat
+
+apply plugin: 'com.android.application'
+
+// 定义 config 变量
+def globalDepengdenciesConfig = rootProject.ext
+
+android {
+    compileSdkVersion globalDepengdenciesConfig.android.compileSdkVersion
+    defaultConfig {
+        applicationId "com.kangwencai.appframework_mvp_retrofit"
+        minSdkVersion globalDepengdenciesConfig.android.minSdkVersion
+        targetSdkVersion globalDepengdenciesConfig.android.compileSdkVersion
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [moduleName: project.getName()]
+            }
+        }
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    signingConfigs {
+        // 生产环境打包配置
+        config {
+            keyAlias 'debug_key'
+            keyPassword '666666'
+            storeFile file('../app/debug.jks')
+            storePassword '666666'
+        }
+        // 测试环境打包配置
+        debugJks {
+            keyAlias 'debug_key'
+            keyPassword '666666'
+            storeFile file('../app/debug.jks')
+            storePassword '666666'
+        }
+    }
+
+    buildTypes {
+        // 生产环境打包配置
+        release {
+            minifyEnabled true
+            shrinkResources true
+            zipAlignEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
+        }
+        // 测试环境打包配置
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debugJks
+        }
+    }
+// 打包的输出路径
+    applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            def file = output.outputFile
+            //生成的文件名：myapp+版本名+生成日期+.apk
+            outputFileName = new File("test-" + defaultConfig.versionName + "-" + buildTime() + ".apk")
+        }
+    }
+}
+
+// 构建的时间，生成打包名字用
+def buildTime() {
+    def df = new SimpleDateFormat("yyyyMMdd")
+    df.setTimeZone(TimeZone.getDefault())
+    return df.format(new Date())
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+
+//    testImplementation 'junit:junit:4.12'
+//    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+//    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    implementation globalDepengdenciesConfig.dependencies["support-v7"]
+    implementation globalDepengdenciesConfig.dependencies["constraint"]
+
+    // 日志
+    implementation globalDepengdenciesConfig.dependencies["logger"]
+    /******************所有retrofit的包********************/
+    implementation globalDepengdenciesConfig.dependencies["retrofit"]
+    implementation globalDepengdenciesConfig.dependencies["retrofit-converter-gson"]
+    implementation globalDepengdenciesConfig.dependencies["retrofit-rxjava"]
+    //    implementation 'com.squareup.okhttp3:okhttp:3.8.1'
+    //    implementation 'org.parceler:parceler:1.1.6'
+    /******************所有retrofit的包********************/
+    /******************butterKnife坑爹来了********************/
+    implementation globalDepengdenciesConfig.dependencies["butterknife"]
+    annotationProcessor globalDepengdenciesConfig.dependencies["butterknife-compiler"]
+
+    /*******************butterKnife结束*******************/
+    /*******************gson*******************/
+    implementation globalDepengdenciesConfig.dependencies["gson"]
+//    implementation 'com.google.code.gson:gson-parent:2.8.0'
+    /*******************gson结束*******************/
+    /*******************RX_android*******************/
+    //    implementation 'io.reactivex.rxjava2:rxjava:2.1.14'
+    implementation globalDepengdenciesConfig.dependencies["rxandroid"]
+    /*******************RX_android结束*******************/
+
+    /*******************阿里的跳转路由*******************/
+    implementation globalDepengdenciesConfig.dependencies["arouter-api"]
+    annotationProcessor globalDepengdenciesConfig.dependencies["arouter-compiler"]
+    /*******************阿里的跳转路由*******************/
+
+    implementation project(':common')
+    implementation project(':business')
+}

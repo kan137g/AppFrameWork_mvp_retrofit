@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="themeColor">#a80000</color>
+    <!--<color name="main_bg_color">#fcedd9</color>-->
+    <color name="main_bg_color">#eaeaea</color>
+    <color name="default_font_color">#808080</color>
+    <color name="white">#ffffff</color>
+    <color name="transparent">@android:color/transparent</color>
+
+    <color name="wheelview_bg">#f7dcbf</color>
+
+    <color name="deep_red">#ed1c24</color>
+    <color name="red_press">#c1272d</color>
+
+    <color name="yellow">#ff971a</color>
+    <color name="yellow_press">#f15a24</color>
+
+    <color name="green">#44dc5e</color>
+    <color name="orange">#ff7133</color>
+    <color name="orange_3b">#ff933b</color>
+
+    <color name="gray_read">#fff80f</color>
+    <color name="gray_b3">#b3b3b3</color>
+    <color name="gray_66">#666666</color>
+    <color name="gray_item">#5d6d7d</color>
+    <color name="gray_ccc">#cccccc</color>
+    <color name="gray_99">#999999</color>
+    <color name="gray_4d">#4d4d4d</color>
+    <color name="gray_e6">#e6e6e6</color>
+    <color name="gray_f2">#f2f2f2</color>
+
+    <color name="blue">#1daae6</color>
+
+    <color name="pink">#f7d0bf</color>
+
+    <color name="line_color">#fcebd4</color>
+    <color name="black">#000000</color>
+    <color name="black_60">#99000000</color>
+
+    <color name="black_50">#80000000</color>
+    <color name="black_90">#e5000000</color>
+
+
+    <!--自定义对话框-->
+    <color name="trans">#00000000</color>
+    <color name="alertdialog_line">#c6c6c6</color>
+    <color name="actionsheet_blue">#037BFF</color>
+    <color name="actionsheet_red">#FD4A2E</color>
+    <color name="actionsheet_gray">#8F8F8F</color>
+    <color name="color_f84f21">#f84f21</color>
+    <color name="color_6f6f6f">#6f6f6f</color>
+</resources>

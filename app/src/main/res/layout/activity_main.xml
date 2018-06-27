@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context=".activity.MainActivity">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/px_20"
+        android:background="@color/themeColor"
+        android:padding="@dimen/px_20"
+        android:text="跳转到知乎推荐列表页:MVP+Retrofit"
+        android:textColor="@color/white" />
+
+    <Button
+        android:id="@+id/tv_jump_to_zhihu_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/px_20"
+        android:padding="@dimen/px_20"
+        android:text="跳转到知乎推荐列表页" />
+
+
+    <Button
+        android:id="@+id/tonews"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/px_20"
+        android:padding="@dimen/px_20"
+        android:text="跳转到知乎推荐列表页" />
+
+
+</LinearLayout>

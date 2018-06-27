@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@color/actionsheet_red" />
+    <corners android:radius="@dimen/px_10" />
+    <!--<padding-->
+        <!--android:bottom="@dimen/px_10"-->
+        <!--android:left="@dimen/px_10"-->
+        <!--android:right="@dimen/px_10"-->
+        <!--android:top="@dimen/px_10" />-->
+    <!--圆角矩形白色背景-->
+</shape>
+
