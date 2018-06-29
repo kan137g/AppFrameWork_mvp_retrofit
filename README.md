@@ -33,7 +33,7 @@ TIPS：不太习惯用Retrofit+RxJava，再加上MVP就特别繁琐了
 - service 这里封装了一个监听系统下载的工具类
 
 #### app module
-主项目
+主项目，负责各个组件的入口，和打包APK，类似于一个壳的存在。
 
 
 #### business module

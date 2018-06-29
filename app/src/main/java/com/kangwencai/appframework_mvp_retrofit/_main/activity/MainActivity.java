@@ -1,4 +1,4 @@
-package com.kangwencai.appframework_mvp_retrofit.activity;
+package com.kangwencai.appframework_mvp_retrofit._main.activity;
 
 import android.content.Intent;
 import android.view.View;
@@ -6,6 +6,9 @@ import android.view.View;
 import com.kangwencai.appframework_mvp_retrofit.R;
 import com.kangwencai.business.activity.ZhihuStoryListActivity;
 import com.kangwencai.common.base.BaseActivity;
+import com.kangwencai.common.utils.LogUtils;
+import com.orhanobut.logger.AndroidLogAdapter;
+import com.orhanobut.logger.Logger;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -29,7 +32,9 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void initData() {
+        LogUtils.init();
 
+        LogUtils.e("============");
     }
 
 

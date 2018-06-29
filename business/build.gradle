@@ -40,6 +40,7 @@ dependencies {
 
     // 日志
     implementation globalDepengdenciesConfig.dependencies["logger"]
+
     /******************所有retrofit的包********************/
     implementation globalDepengdenciesConfig.dependencies["retrofit"]
     implementation globalDepengdenciesConfig.dependencies["retrofit-converter-gson"]

@@ -1,7 +1,7 @@
-package com.kangwencai.appframework_mvp_retrofit.activity.IView;
+package com.kangwencai.appframework_mvp_retrofit._main.activity.IView;
 
 
-import com.kangwencai.appframework_mvp_retrofit.model.bean.zhihu.ZhihuTopStory;
+import com.kangwencai.appframework_mvp_retrofit._main.model.bean.zhihu.ZhihuTopStory;
 
 import java.util.ArrayList;
 

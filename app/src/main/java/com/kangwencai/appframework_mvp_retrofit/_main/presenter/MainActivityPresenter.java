@@ -1,20 +1,16 @@
-package com.kangwencai.appframework_mvp_retrofit.presenter;
+package com.kangwencai.appframework_mvp_retrofit._main.presenter;
 
 import android.content.Context;
 
-import com.kangwencai.appframework_mvp_retrofit.activity.IView.IHttpsActivity;
+import com.kangwencai.appframework_mvp_retrofit._main.activity.IView.IHttpsActivity;
 
-import com.kangwencai.appframework_mvp_retrofit.model.bean.zhihu.ZhihuTopStory;
-import com.kangwencai.appframework_mvp_retrofit.model.biz.ZhihuDailyBiz;
+import com.kangwencai.appframework_mvp_retrofit._main.model.bean.zhihu.ZhihuTopStory;
+import com.kangwencai.appframework_mvp_retrofit._main.model.biz.ZhihuDailyBiz;
 
 import com.kangwencai.common.base.BasePresenter;
 import com.kangwencai.common.model.listener.INetCallBack;
 
 import java.util.ArrayList;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 /**
  * Description:

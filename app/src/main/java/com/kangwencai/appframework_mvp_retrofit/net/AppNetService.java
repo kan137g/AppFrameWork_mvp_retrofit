@@ -1,7 +1,7 @@
 package com.kangwencai.appframework_mvp_retrofit.net;
 
-import com.kangwencai.appframework_mvp_retrofit.model.bean.zhihu.ZhiHuDaily;
-import com.kangwencai.appframework_mvp_retrofit.model.bean.zhihu.ZhihuStoryContent;
+import com.kangwencai.appframework_mvp_retrofit._main.model.bean.zhihu.ZhiHuDaily;
+import com.kangwencai.appframework_mvp_retrofit._main.model.bean.zhihu.ZhihuStoryContent;
 import com.kangwencai.common.net_retrofit.rest.ApiResponse;
 
 

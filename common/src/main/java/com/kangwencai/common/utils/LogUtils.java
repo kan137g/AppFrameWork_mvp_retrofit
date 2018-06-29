@@ -1,6 +1,8 @@
 package com.kangwencai.common.utils;
 
 
+import com.kangwencai.common.IConstants;
+import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
 
 /**
@@ -9,8 +11,16 @@ import com.orhanobut.logger.Logger;
  * 日志工具类
  */
 public class LogUtils {
-//    private static boolean isDebug = false;
-    private static boolean isDebug = true;
+    //    private static boolean isDebug = false;
+    private static boolean isDebug = IConstants.isDebug;
+
+    /**
+     * 2.2.0必须要初始化之后才能用，而且这里只能放到activity里面初始化
+     */
+    public static void init() {
+        Logger.addLogAdapter(new AndroidLogAdapter());
+
+    }
 
     public static void turnOnDebug() {
         isDebug = true;

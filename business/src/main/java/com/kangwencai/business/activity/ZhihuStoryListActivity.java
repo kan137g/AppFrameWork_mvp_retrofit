@@ -63,7 +63,8 @@ public class ZhihuStoryListActivity extends BaseActivity implements IHttpsActivi
         operatorsrecycler.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.HORIZONTAL));
 //        operatorsrecycler.setPullRefreshEnabled(false);
 //        operatorsrecycler.setLoadingMoreEnabled(false);
-
+//        operatorsrefresh.setOnRefreshListener();
+        operatorsrefresh.setEnabled(false);
         mZhihuListsAdapter = new ZhihuListsAdapter(mContext, storyArrayList);
         operatorsrecycler.setAdapter(mZhihuListsAdapter);
 

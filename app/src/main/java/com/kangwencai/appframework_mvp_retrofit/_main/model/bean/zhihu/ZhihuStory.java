@@ -1,32 +1,27 @@
-package com.kangwencai.appframework_mvp_retrofit.model.bean.zhihu;
+package com.kangwencai.appframework_mvp_retrofit._main.model.bean.zhihu;
+
+import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  * Description:
  * Author: kangwencai
- * DATA: Date on 2018/6/26.
+ * DATA: Date on 2018/6/25.
  * PS: Not easy to write code, please indicate.
  */
-public class ZhihuTopStory {
-    /**
-     * image : https://pic4.zhimg.com/v2-671ff79c5f9d00c7d4012328ce1d08d7.jpg
-     * type : 0
-     * id : 9687720
-     * ga_prefix : 062616
-     * title : 「这么过分的事，你居然还觉得无所谓？」
-     */
 
-    private String image;
+public class ZhihuStory implements Serializable {
     private int type;
     private int id;
     private String ga_prefix;
     private String title;
 
-    public String getImage() {
-        return image;
+    public ArrayList<String> getImages() {
+        return images;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setImages(ArrayList<String> images) {
+        this.images = images;
     }
 
     public int getType() {
@@ -61,4 +56,5 @@ public class ZhihuTopStory {
         this.title = title;
     }
 
+    private ArrayList<String> images;
 }

@@ -1,4 +1,4 @@
-package com.kangwencai.appframework_mvp_retrofit.model.bean.zhihu;
+package com.kangwencai.appframework_mvp_retrofit._main.model.bean.zhihu;
 
 import com.google.gson.annotations.SerializedName;
 

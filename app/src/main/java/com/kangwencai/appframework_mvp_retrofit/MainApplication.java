@@ -6,6 +6,8 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.kangwencai.appframework_mvp_retrofit.net.RetrofitRestApp;
 import com.kangwencai.common.IConstants;
 import com.kangwencai.common.net_retrofit.RetrofitRest;
+import com.orhanobut.logger.AndroidLogAdapter;
+import com.orhanobut.logger.Logger;
 
 /**
  * Description:

@@ -1,21 +1,17 @@
-package com.kangwencai.appframework_mvp_retrofit.model.biz;
+package com.kangwencai.appframework_mvp_retrofit._main.model.biz;
 
 import android.os.Handler;
 
 import com.google.gson.Gson;
-import com.kangwencai.appframework_mvp_retrofit.model.bean.zhihu.ZhiHuDaily;
-import com.kangwencai.appframework_mvp_retrofit.model.bean.zhihu.ZhihuStory;
-import com.kangwencai.appframework_mvp_retrofit.model.bean.zhihu.ZhihuTopStory;
+import com.kangwencai.appframework_mvp_retrofit._main.model.bean.zhihu.ZhiHuDaily;
+import com.kangwencai.appframework_mvp_retrofit._main.model.bean.zhihu.ZhihuStory;
+import com.kangwencai.appframework_mvp_retrofit._main.model.bean.zhihu.ZhihuTopStory;
 import com.kangwencai.appframework_mvp_retrofit.net.RetrofitRestApp;
 import com.kangwencai.common.model.listener.INetCallBack;
 import com.kangwencai.common.net_ok_http.HttpServiceManager;
-import com.kangwencai.common.net_retrofit.RetrofitRest;
-import com.kangwencai.common.net_retrofit.rest.RestCallBack;
-import com.kangwencai.common.net_retrofit.rest.RestCallBackNew;
 
 
 import java.util.ArrayList;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
