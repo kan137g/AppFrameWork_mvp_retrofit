@@ -1,19 +1,19 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.kangwencai.common">
+package="com.kangwencai.common">
 
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+<uses-permission android:name="android.permission.INTERNET" />
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
-    <application
-        android:allowBackup="true"
-        android:supportsRtl="true">
-        <!--<activity android:name=".ApplyActivity"/>-->
+<application
+    android:allowBackup="true"
+    android:supportsRtl="true">
+    <!--<activity android:name=".ApplyActivity"/>-->
 
 
-        <!-- 下载升级包的服务 -->
-        <service android:name=".service.DownloadService" />
+    <!-- 下载升级包的服务 -->
+    <service android:name=".service.DownloadService" />
 
-    </application>
+</application>
 </manifest>

@@ -1,1 +1,1 @@
-include ':app', ':business', ':common'
+include ':app', ':business', ':common', ':filepicker'

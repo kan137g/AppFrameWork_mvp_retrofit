@@ -22,12 +22,12 @@ android {
         }
 
     }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
+//    buildTypes {
+//        release {
+//            minifyEnabled false
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//        }
+//    }
 
     signingConfigs {
         // 生产环境打包配置
@@ -88,6 +88,8 @@ dependencies {
 
     implementation globalDepengdenciesConfig.dependencies["support-v7"]
     implementation globalDepengdenciesConfig.dependencies["constraint"]
+    implementation globalDepengdenciesConfig.dependencies["design"]
+//    implementation globalDepengdenciesConfig.dependencies["constraint-layout"]
 
     // 日志
     implementation globalDepengdenciesConfig.dependencies["logger"]

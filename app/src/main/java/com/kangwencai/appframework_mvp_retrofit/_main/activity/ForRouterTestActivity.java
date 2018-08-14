@@ -1,11 +1,15 @@
 package com.kangwencai.appframework_mvp_retrofit._main.activity;
 
+import android.app.ActivityManager;
+import android.content.Context;
+
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.kangwencai.appframework_mvp_retrofit.R;
 import com.kangwencai.common.IConstantRouterPages;
 import com.kangwencai.common.base.BaseActivity;
 import com.kangwencai.common.utils.LogUtils;
-import com.orhanobut.logger.Logger;
+
+import java.util.List;
 
 import butterknife.ButterKnife;
 
@@ -21,8 +25,6 @@ public class ForRouterTestActivity extends BaseActivity {
         setContent(R.layout.activity_for_router_test);
         ButterKnife.bind(this);
 
-        Logger.e("============");
-        LogUtils.e(getRunningActivityName());
     }
 
     @Override
@@ -32,11 +34,19 @@ public class ForRouterTestActivity extends BaseActivity {
 
     @Override
     public void initData() {
+        getRunningActivityName();
 
     }
 
-    private String getRunningActivityName() {
-        String contextString = mContext.toString();
-        return contextString.substring(contextString.lastIndexOf(".") + 1, contextString.indexOf("@"));
+    private void getRunningActivityName() {
+        ActivityManager manager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+
+        List<ActivityManager.RunningTaskInfo> taskInfoList= manager.getRunningTasks(1);
+        ActivityManager.RunningTaskInfo info =taskInfoList.get(0);
+
+        String shortClassName = info.topActivity.getShortClassName();    //类名
+        String className = info.topActivity.getClassName();              //完整类名
+        String packageName = info.topActivity.getPackageName();
+        LogUtils.e(className);
     }
 }
