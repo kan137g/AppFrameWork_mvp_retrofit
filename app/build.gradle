@@ -1,122 +1,85 @@
-import java.text.SimpleDateFormat
-
 apply plugin: 'com.android.application'
-
-// 定义 config 变量
-def globalDepengdenciesConfig = rootProject.ext
+//apply plugin: 'com.android.library'
+//apply plugin: 'com.jakewharton.butterknife'
 
 android {
-    compileSdkVersion globalDepengdenciesConfig.android.compileSdkVersion
+    compileSdkVersion project.compileSdkVersion
+    buildToolsVersion project.buildToolsVersion
     defaultConfig {
-        applicationId "com.kangwencai.appframework_mvp_retrofit"
-        minSdkVersion globalDepengdenciesConfig.android.minSdkVersion
-        targetSdkVersion globalDepengdenciesConfig.android.compileSdkVersion
+        applicationId project.packageName
+        minSdkVersion project.appMinSdkVersion
+        targetSdkVersion project.targetSdkVersion
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+//        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        javaCompileOptions {
-            annotationProcessorOptions {
-                arguments = [moduleName: project.getName()]
-            }
+
+        multiDexEnabled true
+
+        // 混淆有bug，需要这么添加忽略一下，否则可能打包不成功
+        compileOptions {
+            sourceCompatibility 1.8
+            targetCompatibility 1.8
         }
 
+        manifestPlaceholders = [
+                APP_NAME: ""
+
+        ]
+    }
+    // dex包太大，报错：Cannot merge new index xxxx into a non-jumbo instruction!
+    dexOptions {
+        jumboMode true
     }
     buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
-
-    signingConfigs {
-        // 生产环境打包配置
-        config {
-            keyAlias 'debug_key'
-            keyPassword '666666'
-            storeFile file('../app/debug.jks')
-            storePassword '666666'
-        }
-        // 测试环境打包配置
-        debugJks {
-            keyAlias 'debug_key'
-            keyPassword '666666'
-            storeFile file('../app/debug.jks')
-            storePassword '666666'
-        }
-    }
-
-    buildTypes {
-        // 生产环境打包配置
-        release {
-            minifyEnabled true
-            shrinkResources true
-            zipAlignEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.config
-        }
-        // 测试环境打包配置
         debug {
+            applicationIdSuffix ".debug"
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.debugJks
-        }
-    }
-// 打包的输出路径
-    applicationVariants.all { variant ->
-        variant.outputs.all { output ->
-            def file = output.outputFile
-            //生成的文件名：myapp+版本名+生成日期+.apk
-            outputFileName = new File("test-" + defaultConfig.versionName + "-" + buildTime() + ".apk")
-        }
-    }
-}
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
 
-// 构建的时间，生成打包名字用
-def buildTime() {
-    def df = new SimpleDateFormat("yyyyMMdd")
-    df.setTimeZone(TimeZone.getDefault())
-    return df.format(new Date())
+            buildConfigField "boolean", "isDebug", "true"
+            buildConfigField "String", "baseUrl", "\"" + "http://vfscm.vanke.com:82/" + "\""
+
+        }
+        release {
+
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            buildConfigField "boolean", "isDebug", "false"
+            buildConfigField "String", "baseUrl", "\"" + "http://vfscm.vanke.com:82/" + "\""
+
+        }
+    }
 }
 
 dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
-
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'androidx.annotation:annotation:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
 //    testImplementation 'junit:junit:4.12'
-//    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-//    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+//    androidTestImplementation 'androidx.test:runner:1.2.0'
+//    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
-    implementation globalDepengdenciesConfig.dependencies["support-v7"]
-    implementation globalDepengdenciesConfig.dependencies["constraint"]
 
-    // 日志
-    implementation globalDepengdenciesConfig.dependencies["logger"]
-    /******************所有retrofit的包********************/
-    implementation globalDepengdenciesConfig.dependencies["retrofit"]
-    implementation globalDepengdenciesConfig.dependencies["retrofit-converter-gson"]
-    implementation globalDepengdenciesConfig.dependencies["retrofit-rxjava"]
-    //    implementation 'com.squareup.okhttp3:okhttp:3.8.1'
-    //    implementation 'org.parceler:parceler:1.1.6'
-    /******************所有retrofit的包********************/
-    /******************butterKnife坑爹来了********************/
-    implementation globalDepengdenciesConfig.dependencies["butterknife"]
-    annotationProcessor globalDepengdenciesConfig.dependencies["butterknife-compiler"]
+    implementation project(path: ':commonlib')
 
-    /*******************butterKnife结束*******************/
-    /*******************gson*******************/
-    implementation globalDepengdenciesConfig.dependencies["gson"]
-//    implementation 'com.google.code.gson:gson-parent:2.8.0'
-    /*******************gson结束*******************/
-    /*******************RX_android*******************/
-    //    implementation 'io.reactivex.rxjava2:rxjava:2.1.14'
-    implementation globalDepengdenciesConfig.dependencies["rxandroid"]
-    /*******************RX_android结束*******************/
+    implementation "com.squareup.retrofit2:retrofit:${project.retrofit}"
+    implementation("com.squareup.okhttp3:okhttp:${project.okhttp}")
 
-    /*******************阿里的跳转路由*******************/
-    implementation globalDepengdenciesConfig.dependencies["arouter-api"]
-    annotationProcessor globalDepengdenciesConfig.dependencies["arouter-compiler"]
-    /*******************阿里的跳转路由*******************/
 
-    implementation project(':common')
-    implementation project(':business')
+    implementation "com.orhanobut:logger:${project.logger_version}"
+
+
+    implementation "com.jakewharton:butterknife:${project.butterknife}"
+    annotationProcessor "com.jakewharton:butterknife-compiler:${project.butterknife_compiler}"
+    implementation "com.github.bumptech.glide:glide:${glide}"
+    implementation "com.alibaba:fastjson:${fastjson}"
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
+
+    implementation 'cn.yipianfengye.android:zxing-library:2.2'
+
 }
